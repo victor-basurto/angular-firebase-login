@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+	<mat-toolbar-row>
+		<button mat-icon-button>
+			<mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+		</button>
+		<h1 class="menu-spacer">Homefinder</h1>
+		<div class="inline-menu">
+			<a mat-button [routerLink]="'/'">Home</a>
+			<a mat-button [routerLink]="'/about'">About</a>
+			<a mat-button [routerLink]="'/contact'">Contact</a>
+			<a mat-button [routerLink]="'/admin/login'">Admin</a>
+			<button mat-button *ngIf="authService.isLoggedIn" (click)="authService.logout()">logout</button>
+		</div>
+	</mat-toolbar-row>
+	<!-- <mat-toolbar-row>
+		<span style="font-size: 12px;">Search for the home of your life</span>
+	</mat-toolbar-row> -->
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" >
+	<mat-sidenav #sidenav mode="over" [fixedInViewport]="false">
+		<div class="side-menu mat-typography">
+			Sidenav Content
+			<mat-nav-list>
+				<a mat-list-item [routerLink]="'/'">Home</a>
+				<a mat-list-item [routerLink]="'/about'">About</a>
+				<a mat-list-item [routerLink]="'/contact'">Contact</a>
+				<a mat-list-item [routerLink]="'/admin/login'">Admin</a>
+				<a mat-list-item (click)="sidenav.toggle()" mat-list-item>close</a>
+			</mat-nav-list>
+		</div>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<div style="height: calc(100vh - 85px)">
+			<router-outlet></router-outlet>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>

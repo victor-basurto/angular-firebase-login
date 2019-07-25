@@ -1,0 +1,4 @@
+@media (max-width: 767px) {
+	.inline-menu { display: none; }	
+	mat-sidenav-container { height: calc(100vh - 56px); }
+}
